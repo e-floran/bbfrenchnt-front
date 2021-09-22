@@ -1,0 +1,15 @@
+.inProgressContainer {
+  width: 100vw;
+  min-height: 5rem;
+  margin: 1rem 0;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: visible;
+}
+.inProgressContainer > h3 {
+  width: 100%;
+  text-align: center;
+}

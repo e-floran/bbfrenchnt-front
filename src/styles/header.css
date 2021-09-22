@@ -1,0 +1,51 @@
+header {
+  width: 100vw;
+  height: 7rem;
+  background-color: var(--BBprimary);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+header > h1 {
+  font-size: 2.5rem;
+  color: var(--BBbackground);
+  width: calc(100% - 9rem);
+}
+.headerNavbar {
+  width: 100%;
+}
+.headerNavbar > ul {
+  width: 100%;
+  height: 2rem;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+.headerNavbar > ul > li {
+  width: fit-content;
+  padding: 0 0.5rem;
+  height: 2rem;
+  font-size: var(--BBmediumSize);
+  background-color: var(--BBprimary);
+  border: 0.1rem solid var(--BBbackground);
+  border-radius: 0;
+  transition: background-color 0.5s, border 0.5s, border-radius 0.5s;
+}
+.headerNavbar > ul > li:hover {
+  background-color: var(--BBsecondary);
+  border: 0.1rem solid var(--BBsecondary);
+  border-radius: 0.5rem;
+}
+.headerNavbar > ul > li > a {
+  color: var(--BBbackground);
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  padding: 0.25rem;
+}
