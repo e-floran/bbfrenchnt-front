@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 import bbApiRequest from "../api/bbApiRequest";
 
@@ -11,6 +12,24 @@ export default function Home() {
 
   const bbApiLoging = (e) => {
     e.preventDefault();
+    // axios
+    //   .post(
+    //     "https://eonet.sci.gsfc.nasa.gov/api/v3",
+    //     {
+    //       field: "events",
+    //       params: {
+    //         status: "open",
+    //         days: 1,
+    //       },
+    //     },
+    //     { headers: { "Content-Type": "application/json" } }
+    //   )
+    //   .catch((error) => {
+    //     console.log(error);
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //   });
     bbApiRequest.defaults.withCredentials = true;
     bbApiRequest
       .get(`login.aspx?login=${loginName}&code=${loginPassword}`)

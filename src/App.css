@@ -59,10 +59,10 @@ h3 {
   margin: 1rem 0;
   position: absolute;
   left: -4rem;
-  bottom: 0;
+  top: 1rem;
   /* width: 4rem;
   height: 4rem; */
-  animation: rotatingIcon 2s infinite linear, movingIcon 3s infinite linear;
+  animation: rotatingIcon 1s infinite linear, movingIcon 5s infinite linear;
 }
 @keyframes rotatingIcon {
   0% {
@@ -95,19 +95,19 @@ h3 {
 }
 @keyframes movingIcon {
   0% {
-    left: -4rem;
+    left: -10%;
   }
   25% {
-    left: 8rem;
+    left: 25%;
   }
   50% {
-    left: 20rem;
+    left: 60%;
   }
   75% {
-    left: 32rem;
+    left: 95%;
   }
   100% {
-    left: 44rem;
+    left: 130%;
   }
 }
 /* @keyframes movingIcon {
