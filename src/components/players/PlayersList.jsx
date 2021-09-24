@@ -1,11 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+// import { useState } from "react";
 
 import "../../styles/players/playersList.css";
 
 import PlayerCard from "./PlayerCard";
 
 export default function PlayersList({ players }) {
-  const [subscribedStreams, setSubscribedStreams] = useState([]);
+  // const [subscribedStreams, setSubscribedStreams] = useState([]);
 
   const returningCards = () => {
     let stockCards = [];
