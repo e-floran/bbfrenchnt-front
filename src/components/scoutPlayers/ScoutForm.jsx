@@ -1,12 +1,22 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import "../../styles/form.css";
 
-export default function ScoutForm() {
-  const [playerCountry, setPlayerCountry] = useState("France");
-  const [playerAge, setPlayerAge] = useState(null);
+export default function ScoutForm({
+  playerAge,
+  playerCountry,
+  setPlayerAge,
+  setPlayerCountry,
+  retrievingLeagues,
+}) {
   return (
-    <form className="apiRequestForm">
+    <form
+      className="apiRequestForm"
+      onSubmit={(e) => {
+        e.preventDefault();
+        retrievingLeagues();
+      }}
+    >
       <label>
         Nationalité :{" "}
         <input
@@ -31,7 +41,15 @@ export default function ScoutForm() {
           }}
         />
       </label>
-      <button type="submit">Rechercher</button>
+      <button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+          retrievingLeagues();
+        }}
+      >
+        Rechercher
+      </button>
     </form>
   );
 }

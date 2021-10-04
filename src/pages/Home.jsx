@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import axios from "axios";
 
 import bbApiRequest from "../api/bbApiRequest";
 
@@ -34,38 +33,6 @@ export default function Home() {
       });
   };
 
-  // const bbApiEconomy = (e) => {
-  //   e.preventDefault();
-  //   bbApiRequest.defaults.withCredentials = true;
-  //   bbApiRequest
-  //     .get(`economy.aspx`)
-  //     .then((response) => {})
-  //     .catch((err) => {
-  //       console.log(
-  //         "erreur au niveau de la requete de connexion à l'API : ",
-  //         err
-  //       );
-  //     });
-  // };
-
-  // const eonet = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .get(
-  //       "https://eonet.sci.gsfc.nasa.gov/api/v3/events?status=open?days=1",
-  //       {
-  //         field: "events",
-  //       },
-  //       { headers: { "Content-Type": "application/json" } }
-  //     )
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
-
   return (
     <div className="pageGlobalContainer">
       <h2>Bienvenue sur l'outil de suivi des joueurs français</h2>
@@ -76,13 +43,6 @@ export default function Home() {
         setLoginPassword={setLoginPassword}
         bbApiLoging={bbApiLoging}
       />
-      {/* <LoginForm
-        loginName={loginName}
-        loginPassword={loginPassword}
-        setLoginName={setLoginName}
-        setLoginPassword={setLoginPassword}
-        bbApiLoging={eonet}
-      /> */}
       <InProgress />
     </div>
   );
