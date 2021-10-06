@@ -3,7 +3,7 @@ import { useEffect } from "react/cjs/react.development";
 import { parseString } from "xml2js";
 
 import bbApiRequest from "../api/bbApiRequest";
-import { divisionsPerCountries } from "../utils/divisionsPerCountries";
+// import { divisionsPerCountries } from "../utils/divisionsPerCountries";
 
 import InProgress from "../components/reusableComponents/InProgress";
 import PlayersList from "../components/scoutPlayers/PlayersList";
