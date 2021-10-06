@@ -3,6 +3,7 @@ import { useEffect } from "react/cjs/react.development";
 import { parseString } from "xml2js";
 
 import bbApiRequest from "../api/bbApiRequest";
+import { divisionsPerCountries } from "../utils/divisionsPerCountries";
 
 import InProgress from "../components/reusableComponents/InProgress";
 import PlayersList from "../components/scoutPlayers/PlayersList";
@@ -19,6 +20,7 @@ export default function ScoutPlayers() {
   const retrievingLeagues = () => {
     let stockLeagues = [];
     let i = 1;
+    // for (let c = 0; c < divisionsPerCountries.length; c++) {}
     bbApiRequest.defaults.withCredentials = true;
     bbApiRequest
       .get(`leagues.aspx?countryid=11&level=${i}`)
