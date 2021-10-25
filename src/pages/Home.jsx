@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { Context } from '../context/Context'
 
 import bbApiRequest from "../api/bbApiRequest";
 
@@ -7,7 +10,11 @@ import InProgress from "../components/reusableComponents/InProgress";
 
 export default function Home() {
   const [loginName, setLoginName] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
+  const [loginPassword, setLoginPassword] = useState("")
+
+  const [userName, setUserName] = useState()
+  const [password, setPassword] = useState()
+  const { dispatch } = useContext(Context)
 
   const bbApiLoging = (e) => {
     e.preventDefault();
@@ -33,6 +40,36 @@ export default function Home() {
       });
   };
 
+  const handleUserName = e => {
+    setUserName(e)
+  }
+  const handlePassword = e => {
+    setPassword(e)
+  }
+
+  const handleLogIn = async e => {
+    e.preventDefault()
+    const resCo = await axios
+      .post(`http://localhost:3000/auth`, {
+        log: userName,
+        password: password
+      })
+      .then(result => {
+        if (result.data != 'Invalid') {
+          dispatch({
+            type: 'LOGIN_SUCCESS',
+            payload: result.data
+          })
+        }})
+      }
+
+      const handleLogOut = async e => {
+        e.preventDefault()
+        dispatch({
+          type: 'LOGOUT'
+        })
+      }
+
   return (
     <div className="pageGlobalContainer">
       <h2>Bienvenue sur l'outil de suivi des joueurs français</h2>
@@ -44,6 +81,38 @@ export default function Home() {
         bbApiLoging={bbApiLoging}
       />
       <InProgress />
+      <div className='AdminConnection'>
+        <form>
+          <fieldset>
+            <label htmlFor='userName'>
+              Nom d'utilisateur <span className='connection-required'>*</span>
+            </label>
+            <input
+              type='text'
+              id='userName'
+              onChange={e => handleUserName(e.target.value)}
+            />
+            <caption>
+              Saississez votre nom d'utilisateur pour Greeters Loire Valley
+            </caption>
+          </fieldset>
+          <fieldset>
+            <label htmlFor='password'>
+              Mot de passe <span className='connection-required'>*</span>
+            </label>
+            <input
+              type='password'
+              id='password'
+              onChange={e => handlePassword(e.target.value)}
+            />
+            <caption>
+              Saississez le mot de passe correspondant à votre nom d'utilisateur
+            </caption>
+          </fieldset>
+          <button onClick={handleLogIn}>Se connecter</button>
+        </form>
+      </div>
+      <button onClick={handleLogOut}> test Logout</button>
     </div>
   );
 }
