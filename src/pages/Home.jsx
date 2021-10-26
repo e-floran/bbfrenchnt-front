@@ -18,11 +18,11 @@ export default function Home() {
 
   const bbApiLoging = (e) => {
     e.preventDefault();
-    bbApiRequest.defaults.withCredentials = true;
+    bbApiRequest.defaults.withCredentials = false;
     bbApiRequest
       .get(`login.aspx?login=${loginName}&code=${loginPassword}`)
       .then((response) => {
-        console.log(typeof response.data, response.data);
+        console.log(response);
         // const informations = response.data.data;
         // setAvailableAPIStreams(informations);
         // setStockAPIStreams(informations);
