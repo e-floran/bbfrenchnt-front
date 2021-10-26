@@ -25,6 +25,7 @@ export default function ScoutPlayers() {
     bbApiRequest
       .get(`leagues.aspx?countryid=11&level=${i}`)
       .then((response) => {
+        console.log("retrieving leagues 2 : ", response);
         parseString(response.data, function (err, result) {
           console.log("retrievingLeagues : ", result.bbapi.division[0].league);
           for (let j = 0; j < result.bbapi.division[0].league.length; j++) {
