@@ -93,7 +93,7 @@ export default function Home() {
               onChange={e => handleUserName(e.target.value)}
             />
             <caption>
-              Saississez votre nom d'utilisateur pour Greeters Loire Valley
+              Saississez votre nom d'utilisateur
             </caption>
           </fieldset>
           <fieldset>
