@@ -16,29 +16,29 @@ export default function Home() {
   const [password, setPassword] = useState()
   const { dispatch } = useContext(Context)
 
-  const bbApiLoging = (e) => {
-    e.preventDefault();
-    bbApiRequest.defaults.withCredentials = false;
-    bbApiRequest
-      .get(`login.aspx?login=${loginName}&code=${loginPassword}`)
-      .then((response) => {
-        console.log(response);
-        // const informations = response.data.data;
-        // setAvailableAPIStreams(informations);
-        // setStockAPIStreams(informations);
-        // setStreamsAssigned(true);
-      })
-      .catch((err) => {
-        console.log(
-          "erreur au niveau de la requete de connexion à l'API : ",
-          err
-        );
-        // streamstoreFeedBackBuilder(
-        //   false,
-        //   `Echec dans la récupération des données`
-        // );
-      });
-  };
+  // const bbApiLoging = (e) => {
+  //   e.preventDefault();
+  //   bbApiRequest.defaults.withCredentials = false;
+  //   bbApiRequest
+  //     .get(`login.aspx?login=${loginName}&code=${loginPassword}`)
+  //     .then((response) => {
+  //       console.log(response);
+  //       // const informations = response.data.data;
+  //       // setAvailableAPIStreams(informations);
+  //       // setStockAPIStreams(informations);
+  //       // setStreamsAssigned(true);
+  //     })
+  //     .catch((err) => {
+  //       console.log(
+  //         "erreur au niveau de la requete de connexion à l'API : ",
+  //         err
+  //       );
+  //       // streamstoreFeedBackBuilder(
+  //       //   false,
+  //       //   `Echec dans la récupération des données`
+  //       // );
+  //     });
+  // };
 
   const handleUserName = e => {
     setUserName(e)
@@ -63,25 +63,47 @@ export default function Home() {
         }})
       }
 
-      const handleLogOut = async e => {
-        e.preventDefault()
-        dispatch({
-          type: 'LOGOUT'
-        })
-      }
 
   return (
     <div className="pageGlobalContainer">
       <h2>Bienvenue sur l'outil de suivi des joueurs français</h2>
-      <LoginForm
+
+      <form className="apiRequestForm">
+      <label>
+        Identifiant :{" "}
+        <input
+          name="formLoginName"
+          type="text"
+          value={loginName}
+          onChange={(e) => {
+            setLoginName(e.target.value);
+          }}
+        />
+      </label>
+      <label>
+        Mot de passe :{" "}
+        <input
+          name="formPlayerAge"
+          type="password"
+          value={loginPassword}
+          onChange={(e) => {
+            setLoginPassword(e.target.value);
+          }}
+        />
+      </label>
+      <button type="submit" onClick={(e) => handleLogIn(e)}>
+        Se connecter
+      </button>
+    </form>
+      {/* <LoginForm
         loginName={loginName}
         loginPassword={loginPassword}
         setLoginName={setLoginName}
         setLoginPassword={setLoginPassword}
         bbApiLoging={bbApiLoging}
-      />
+      /> */}
       <InProgress />
-      <div className='AdminConnection'>
+      {/* <div className='AdminConnection'>
         <form>
           <fieldset>
             <label htmlFor='userName'>
@@ -112,7 +134,7 @@ export default function Home() {
           <button onClick={handleLogIn}>Se connecter</button>
         </form>
       </div>
-      <button onClick={handleLogOut}> test Logout</button>
+      <button onClick={handleLogOut}> test Logout</button> */}
     </div>
   );
 }
