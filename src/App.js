@@ -1,5 +1,6 @@
 // import { useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { PrivateRoute } from './use/useSecureRoute'
 
 import "./App.css";
 import Header from "./components/Header";
@@ -17,12 +18,12 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/database">
+          <PrivateRoute exact path="/database">
             <Database />
-          </Route>
-          <Route exact path="/scoutplayers">
+          </PrivateRoute>
+          <PrivateRoute exact path="/scoutplayers">
             <ScoutPlayers />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </Router>
     </div>

@@ -1,16 +1,16 @@
-import { useState, useContext, useEffect } from "react";
-import { useHistory } from 'react-router-dom'
+import { useState, useContext} from "react";
+// import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import { Context } from '../context/Context'
 
-import bbApiRequest from "../api/bbApiRequest";
+// import bbApiRequest from "../api/bbApiRequest";
 
-import LoginForm from "../components/home/LoginForm";
+// import LoginForm from "../components/home/LoginForm";
 import InProgress from "../components/reusableComponents/InProgress";
 
 export default function Home() {
-  const [loginName, setLoginName] = useState("");
-  const [loginPassword, setLoginPassword] = useState("")
+  // const [loginName, setLoginName] = useState("");
+  // const [loginPassword, setLoginPassword] = useState("")
 
   const [userName, setUserName] = useState()
   const [password, setPassword] = useState()
@@ -60,7 +60,14 @@ export default function Home() {
             type: 'LOGIN_SUCCESS',
             payload: result.data
           })
-        }})
+        } 
+        else {
+          console.log('Wrong Password')
+          dispatch({
+            type: 'LOGIN_FAILURE'
+          })
+        }
+      })
       }
 
 
@@ -74,10 +81,9 @@ export default function Home() {
         <input
           name="formLoginName"
           type="text"
-          value={loginName}
-          onChange={(e) => {
-            setLoginName(e.target.value);
-          }}
+          // value={loginName}
+          id='userName'
+          onChange={e => handleUserName(e.target.value)}
         />
       </label>
       <label>
@@ -85,13 +91,12 @@ export default function Home() {
         <input
           name="formPlayerAge"
           type="password"
-          value={loginPassword}
-          onChange={(e) => {
-            setLoginPassword(e.target.value);
-          }}
+          id='password'
+          // value={loginPassword}
+          onChange={e => handlePassword(e.target.value)}
         />
       </label>
-      <button type="submit" onClick={(e) => handleLogIn(e)}>
+      <button onClick={handleLogIn}>
         Se connecter
       </button>
     </form>
@@ -134,7 +139,7 @@ export default function Home() {
           <button onClick={handleLogIn}>Se connecter</button>
         </form>
       </div>
-      <button onClick={handleLogOut}> test Logout</button> */}
-    </div>
+      {/* <button onClick={handleLogOut}> test Logout</button> */}
+    </div> 
   );
 }
