@@ -58,8 +58,9 @@ export default function Home() {
         if (result.data != 'Invalid') {
           dispatch({
             type: 'LOGIN_SUCCESS',
-            payload: result.data
+            payload: result.data.token
           })
+          localStorage.setItem('Cookie', result.data.cookie)
         } 
         else {
           console.log('Wrong Password')
