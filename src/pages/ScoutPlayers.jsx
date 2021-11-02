@@ -133,6 +133,8 @@ export default function ScoutPlayers() {
     console.log("scout players 3 : ", searchPlayers);
   }, [searchPlayers]);
 
+  
+
   return (
     <div className="pageGlobalContainer">
       <h2>Récupérer les joueurs depuis l'API Buzzerbeater</h2>

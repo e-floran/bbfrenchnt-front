@@ -1,6 +1,8 @@
-// import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import "../../styles/form.css";
+import PlayerCard from "./PlayerCard";
 
 export default function ScoutForm({
   playerAge,
@@ -9,18 +11,37 @@ export default function ScoutForm({
   setPlayerCountry,
   retrievingLeagues,
 }) {
+
+  const [playerId, setPlayerId] = useState(null);
+  const [playerData, setPlayerData] = useState([])
+  console.log(playerId)
+  
+  const getPlayerData = async () => {
+    await axios.get(`http://localhost:3000/test`)
+    .then((res) => {
+      setPlayerData(res)
+      console.log(playerData.data)
+    })
+}
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    getPlayerData()
+}
+
   return (
+    <>
     <form
       className="apiRequestForm"
-      onSubmit={(e) => {
-        e.preventDefault();
-        retrievingLeagues();
-      }}
+      // onSubmit={(e) => {
+      //   e.preventDefault();
+      //   retrievingLeagues();
+      // }}
     >
-      <label>
+      {/* <label>
         Nationalité :{" "}
         <input
-          name="formPlayerCountry"
+          name="formPlayerId"
           type="text"
           value={playerCountry}
           onChange={(e) => {
@@ -40,16 +61,29 @@ export default function ScoutForm({
             setPlayerAge(e.target.value);
           }}
         />
+      </label> */}
+      <label>
+        ID
+        <input
+          name="formPlayerAge"
+          type="number"
+          min="18"
+          max="200"
+          value={playerId}
+          onChange={(e) => {
+            setPlayerId(e.target.value);
+          }}
+        />
       </label>
       <button
         type="submit"
-        onClick={(e) => {
-          e.preventDefault();
-          retrievingLeagues();
-        }}
+        onClick={handleSubmit}
       >
         Rechercher
       </button>
     </form>
+    {/* {playerData ? <PlayerCard player={playerData}/> : null} */}
+     
+     </>
   );
 }

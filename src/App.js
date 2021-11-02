@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import Database from "./pages/Database";
 import ScoutPlayers from "./pages/ScoutPlayers";
+import ScoutForm from "./components/scoutPlayers/ScoutForm";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <Database />
           </PrivateRoute>
           <PrivateRoute exact path="/scoutplayers">
-            <ScoutPlayers />
+            <ScoutForm />
           </PrivateRoute>
         </Switch>
       </Router>

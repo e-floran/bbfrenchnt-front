@@ -1,6 +1,7 @@
 // import { useState, useEffect, useContext } from "react";
 
 export default function PlayerCard({ player }) {
+  console.log(player)
   return (
     <article
       className="playerCardContainer"
@@ -8,8 +9,8 @@ export default function PlayerCard({ player }) {
       //     setOpenedCard(!openedCard);
       //   }}
     >
-      <h5>{player.name}</h5>
-      <p>{player.age}</p>
+      <h5>{player.data[0].firstName}</h5>
+      {/* <p>{player.age}</p>
       <p>{player.potential}</p>
       <p>{player.size}</p>
       <p>{player.js}</p>
@@ -22,7 +23,7 @@ export default function PlayerCard({ player }) {
       <p>{player.id}</p>
       <p>{player.re}</p>
       <p>{player.bl}</p>
-      <p>{player.ss}</p>
+      <p>{player.ss}</p> */}
     </article>
   );
 }
