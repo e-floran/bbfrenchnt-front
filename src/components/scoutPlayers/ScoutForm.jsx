@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 import "../../styles/form.css";
-import PlayerCard from "./PlayerCard";
 
 export default function ScoutForm({
   playerAge,
@@ -14,13 +13,11 @@ export default function ScoutForm({
 
   const [playerId, setPlayerId] = useState(null);
   const [playerData, setPlayerData] = useState([])
-  console.log(playerId)
   
   const getPlayerData = async () => {
-    await axios.get(`http://localhost:3000/test`)
+    await axios.get(`http://localhost:3000/test/${playerId}`)
     .then((res) => {
       setPlayerData(res)
-      console.log(playerData.data)
     })
 }
 
@@ -31,6 +28,7 @@ export default function ScoutForm({
 
   return (
     <>
+    {/* {console.log(playerData)} */}
     <form
       className="apiRequestForm"
       // onSubmit={(e) => {
